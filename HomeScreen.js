@@ -1,7 +1,16 @@
 import  React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
-
+import axios from 'axios';
 export function HomeScreen({navigation}) {
+  const loadData = async ()=> {
+    const image = await axios.get('https://api.thedogapi.com/v1/images/search');
+    const data = image.data;
+    const i = data[0];
+    console.log(i)
+    console.log(i.url)
+   
+
+  }
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>HomeScreen</Text>
