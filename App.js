@@ -1,24 +1,36 @@
+import  React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import 'react-native-gesture-handler';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import HomeScreen from './HomeScreen';
+import Favorites from './Favorites';
 
-export default function App() {
+const Stack = createStackNavigator();
+
+function MyStack() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-     
-      <StatusBar style="auto" />
-    </View>
+    <Stack.Navigator screenOptions={{
+      headerShown: false
+    }} >
+      <Stack.Screen name="HomeScreen" component={HomeScreen} />
+      <Stack.Screen name="Favorites" component={Favorites} />
+    </Stack.Navigator>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default function App() {
+  return (
+    <NavigationContainer headerShown = {false}>
+      <MyStack />
+    </NavigationContainer>
+
+
+  );
+}
+
+
 
 
 //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
