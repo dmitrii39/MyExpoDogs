@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, Button} from 'react-native';
 export function Favorites({navigation}) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>FavoritesScreen</Text>
     <Button
       title="Go to HomeScreen"
       onPress={() => navigation.navigate('HomeScreen')}
