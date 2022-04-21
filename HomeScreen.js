@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
 });
 
 
-//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
+
 
 
 export default HomeScreen;
