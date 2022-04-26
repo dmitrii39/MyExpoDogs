@@ -2,10 +2,28 @@ import  React,{useEffect, useState} from 'react';
 import { StyleSheet, Text, View, Button, Image } from 'react-native';
 import axios from 'axios';
 import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
+
+axios.defaults.headers.common['x-api-key'] = '66c3dea9-7df2-4600-920a-338a909960a9';
+
 export function JustAnyScreen({navigation}) {
   const [url, setUrl] = useState();
   // const [name, setName] = useState()
   // const [breeds, setBreeds] = useState()
+const [image, setImage] = useState();
+
+  const saveToFavourites = async () => {
+    try {
+      const id = 'BJa4kxc4X';
+      const result = await axios.post('https://api.thedogapi.com/v1/favourites', {
+        image_id: image.id
+      });
+      console.log(result)
+    }
+    catch(error) {
+      console.log(error)
+    }
+    
+  };
 
   const loadData = async ()=> {
     // const image = await axios.get(`https://api.thedogapi.com/v1/images/search?breed_id=${breed_id}`);
@@ -14,20 +32,7 @@ export function JustAnyScreen({navigation}) {
     }});
     
 
-    const saveToFavourites = async () => {
-      console.log('eeeeeeeeee')
-      try {
-        const id = 'BJa4kxc4X';
-        const result = await axios.post('https://api.thedogapi.com/v1/favourites', {
-          image_id: id
-        });
-        console.log(result)
-      }
-      catch(error) {
-        console.log(error)
-      }
-      
-    };
+  
 
 
 
@@ -35,7 +40,7 @@ export function JustAnyScreen({navigation}) {
     const data = image.data;
     const i = data[0];
     // const dog = data[4];
-    setUrl(i.url);
+    setImage(i);
     // setName(dog.name)
     // setBreeds(image)
     console.log('PPPPPPP', image)
@@ -50,7 +55,7 @@ export function JustAnyScreen({navigation}) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginTop: 60, }}>
       <Text>JustAnyScreen</Text>
-      <Image source={{uri: url, width:200, height:200 }}/>
+      <Image source={{uri: image?.url, width:200, height:200 }}/>
       <Button title='Next photo' onPress={() => loadData()}/>
       <Button title='Save to favourites' onPress={() => saveToFavourites()}/>
     <Button
