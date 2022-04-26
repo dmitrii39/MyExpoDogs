@@ -8,7 +8,30 @@ export function JustAnyScreen({navigation}) {
   // const [breeds, setBreeds] = useState()
 
   const loadData = async ()=> {
-    const image = await axios.get(`https://api.thedogapi.com/v1/images/search?breed_id=${breed_id}`);
+    // const image = await axios.get(`https://api.thedogapi.com/v1/images/search?breed_id=${breed_id}`);
+    const image = await axios.get(`https://api.thedogapi.com/v1/images/search`, {params: {
+      breed_id: 222
+    }});
+    
+
+    const saveToFavourites = async () => {
+      console.log('eeeeeeeeee')
+      try {
+        const id = 'BJa4kxc4X';
+        const result = await axios.post('https://api.thedogapi.com/v1/favourites', {
+          image_id: id
+        });
+        console.log(result)
+      }
+      catch(error) {
+        console.log(error)
+      }
+      
+    };
+
+
+
+    
     const data = image.data;
     const i = data[0];
     // const dog = data[4];
@@ -21,6 +44,7 @@ export function JustAnyScreen({navigation}) {
   }
 
   useEffect(()=> loadData(), [])
+ 
   const breed_id = 222;
     const str = `Hello! ${breed_id}`
   return (
@@ -28,6 +52,7 @@ export function JustAnyScreen({navigation}) {
       <Text>JustAnyScreen</Text>
       <Image source={{uri: url, width:200, height:200 }}/>
       <Button title='Next photo' onPress={() => loadData()}/>
+      <Button title='Save to favourites' onPress={() => saveToFavourites()}/>
     <Button
       title="Go to HOME"
       onPress={() => navigation.navigate('HomeScreen')}
