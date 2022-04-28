@@ -13,7 +13,7 @@ const [image, setImage] = useState();
 
   const saveToFavourites = async () => {
     try {
-      const id = 'BJa4kxc4X';
+      // const id = 'BJa4kxc4X';
       const result = await axios.post('https://api.thedogapi.com/v1/favourites', {
         image_id: image.id
       });
@@ -31,27 +31,19 @@ const [image, setImage] = useState();
       breed_id: 222
     }});
     
-
-  
-
-
-
-    
     const data = image.data;
-    const i = data[0];
+    const i = data[1];
     // const dog = data[4];
     setImage(i);
-    // setName(dog.name)
-    // setBreeds(image)
-    console.log('PPPPPPP', image)
+   
     
   
   }
 
   useEffect(()=> loadData(), [])
  
-  const breed_id = 222;
-    const str = `Hello! ${breed_id}`
+  
+    // const str = `Hello! ${breed_id}`
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginTop: 60, }}>
       <Text>JustAnyScreen</Text>

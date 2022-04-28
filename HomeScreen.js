@@ -14,17 +14,20 @@ export function HomeScreen({navigation}) {
     setUrl(dog .image.url);
     setName(dog .name)
     setBreeds(data)
-    console.log('PPPPPPP', dog )
     
-  
+  };
+  const onBreedsPress = (breed)=> {
+     navigation.navigate('Favourites', {breed});
+     console.log('FFFFFFF', breed)
   }
+
 
   useEffect(()=> loadData(), [])
   
   const renderItem = ({item})=> {
     console.log('ITEM', item )
     return (
-      <TouchableOpacity>
+      <TouchableOpacity onPress={()=> onBreedsPress(item)}>
       <View style={styles.block}>
     <Image source={{uri: item.image.url, width:100, height:100 }}/>
     <View style={styles.dogTextWrapper}>
@@ -38,10 +41,10 @@ export function HomeScreen({navigation}) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginTop: 60, }}>
       <Text>HomeScreen</Text>
-    <Button
+    {/* <Button
       title="Go to Favorites"
       onPress={() => navigation.navigate('Favorites')}
-    />
+    /> */}
     <FlatList
     data={breeds}
     renderItem={renderItem}

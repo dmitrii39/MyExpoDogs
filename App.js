@@ -6,7 +6,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "./HomeScreen";
-import Favorites from "./Favorites";
+import Favourites from "./Favourites";
 import JustAnyScreen from "./JustAnyScreen";
 
 const Stack = createStackNavigator();
@@ -19,7 +19,7 @@ function MyStack() {
       }}
     >
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
-      <Stack.Screen name="Favorites" component={Favorites} />
+      <Stack.Screen name="Favourites" component={Favourites} />
     </Stack.Navigator>
   );
 }
@@ -28,7 +28,7 @@ function MyTabs() {
   return (
     <Tab.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
-      <Stack.Screen name="Favorites" component={Favorites} />
+      <Stack.Screen name="Favourites" component={Favourites} />
       <Stack.Screen name="JustAnyScreen" component={JustAnyScreen} />
     </Tab.Navigator>
   );
