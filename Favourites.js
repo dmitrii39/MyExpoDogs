@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, Button, Image } from "react-native";
+import React, {useState, useEffect} from 'react';
+import {StyleSheet, Text, View, Button, Image} from 'react-native';
 
-export function Favourites({ navigation, route }) {
-  const { breed } = route.params;
+export function Favourites({navigation, route}) {
+  const {breed} = route.params;
   const [image, setImage] = useState(breed.image);
-  // console.log('XXXXXXXXX', route)
 
   useEffect(() => {
     setImage(route.params?.breed?.image);
@@ -18,7 +17,7 @@ export function Favourites({ navigation, route }) {
         params: {
           breed_id: breed.id,
         },
-      }
+      },
     );
 
     const data = image.data;
@@ -28,12 +27,12 @@ export function Favourites({ navigation, route }) {
   };
 
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
       <Text>FavoritesScreen</Text>
-      <Image source={{ uri: image?.url, width: 200, height: 200 }} />
+      <Image source={{uri: image?.url, width: 200, height: 200}} />
       <Button
         title="Go to HomeScreen"
-        onPress={() => navigation.navigate("HomeScreen")}
+        onPress={() => navigation.navigate('HomeScreen')}
       />
       {/* <Button title="Go back" onPress={() => navigation.goBack()} /> */}
     </View>
@@ -43,9 +42,9 @@ export function Favourites({ navigation, route }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 

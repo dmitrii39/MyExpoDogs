@@ -10,13 +10,16 @@ import Favourites from "./Favourites";
 import JustAnyScreen from "./JustAnyScreen";
 
 const Stack = createStackNavigator();
+
+     
+
 const Tab = createBottomTabNavigator();
 function MyStack() {
   return (
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
-      }}
+      }}       
     >
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
       <Stack.Screen name="Favourites" component={Favourites} />
@@ -27,8 +30,12 @@ function MyStack() {
 function MyTabs() {
   return (
     <Tab.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="HomeScreen" component={HomeScreen} />
-      <Stack.Screen name="Favourites" component={Favourites} />
+          <Stack.Screen name="HomeScreen" component={HomeScreen} />
+<Stack.Screen name="Favourites" component={Favourites} />
+      
+      
+      
+      
       <Stack.Screen name="JustAnyScreen" component={JustAnyScreen} />
     </Tab.Navigator>
   );
