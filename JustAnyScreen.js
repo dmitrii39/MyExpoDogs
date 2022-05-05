@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { StyleSheet, Text, View, Button, Image } from "react-native";
-import axios from "axios";
-import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
+import React, {useEffect, useState} from 'react';
+import {StyleSheet, Text, View, Button, Image} from 'react-native';
+import axios from 'axios';
+import {FlatList, TouchableOpacity} from 'react-native-gesture-handler';
 
-axios.defaults.headers.common["x-api-key"] =
-  "66c3dea9-7df2-4600-920a-338a909960a9";
+axios.defaults.headers.common['x-api-key'] =
+  '66c3dea9-7df2-4600-920a-338a909960a9';
 
-export function JustAnyScreen({ navigation }) {
+export function JustAnyScreen({navigation}) {
   const [url, setUrl] = useState();
   // const [name, setName] = useState()
   // const [breeds, setBreeds] = useState()
@@ -15,12 +15,9 @@ export function JustAnyScreen({ navigation }) {
   const saveToFavourites = async () => {
     try {
       // const id = 'BJa4kxc4X';
-      const result = await axios.post(
-        "https://api.thedogapi.com/v1/favourites",
-        {
-          image_id: image.id,
-        }
-      );
+      const result = await axios.post('https://api.thedogapi.com/v1/breeds', {
+        image_id: image.id,
+      });
       console.log(result);
     } catch (error) {
       console.log(error);
@@ -28,19 +25,19 @@ export function JustAnyScreen({ navigation }) {
   };
 
   const loadData = async () => {
-    // const image = await axios.get(`https://api.thedogapi.com/v1/images/search?breed_id=${breed_id}`);
     const image = await axios.get(
       `https://api.thedogapi.com/v1/images/search`,
       {
         params: {
-          breed_id: 222,
+          breed_id: 246,
         },
-      }
+      },
     );
 
     const data = image.data;
-    const i = data[1];
+    const i = data[0];
     // const dog = data[4];
+    console.log('IMAGE', image)
     setImage(i);
   };
 
@@ -51,18 +48,17 @@ export function JustAnyScreen({ navigation }) {
     <View
       style={{
         flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
+        alignItems: 'center',
+        justifyContent: 'center',
         marginTop: 60,
-      }}
-    >
+      }}>
       <Text>JustAnyScreen</Text>
-      <Image source={{ uri: image?.url, width: 200, height: 200 }} />
+      <Image source={{uri: image?.url, width: 200, height: 200}} />
       <Button title="Next photo" onPress={() => loadData()} />
       <Button title="Save to favourites" onPress={() => saveToFavourites()} />
       <Button
         title="Go to HOME"
-        onPress={() => navigation.navigate("HomeScreen")}
+        onPress={() => navigation.navigate('HomeScreen')}
       />
 
       {/* <Button
@@ -80,23 +76,23 @@ const styles = StyleSheet.create({
 
   dogTitle: {
     width: 190,
-    fontFamily: "Cochin",
+    fontFamily: 'Cochin',
     fontSize: 18,
-    fontWeight: "bold",
-    textTransform: "uppercase",
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
   },
 
   dogText: {
-    fontFamily: "Cochin",
+    fontFamily: 'Cochin',
     fontSize: 16,
     width: 190,
   },
 
   block: {
     padding: 10,
-    flexDirection: "row",
-    width: "100%",
-    borderColor: "#000",
+    flexDirection: 'row',
+    width: '100%',
+    borderColor: '#000',
     borderWidth: 1,
     borderRadius: 10,
     marginBottom: 10,
@@ -104,9 +100,9 @@ const styles = StyleSheet.create({
 
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 

@@ -1,14 +1,15 @@
 import React, {useState, useEffect} from 'react';
 import {StyleSheet, Text, View, Button, Image} from 'react-native';
+import Colors from './src/utils/colors';
 
 export function Favourites({navigation, route}) {
   const {breed} = route.params;
   const [image, setImage] = useState(breed.image);
-
+  console.log('BREED', route.params)
   useEffect(() => {
     setImage(route.params?.breed?.image);
   }, [route.params]);
-
+    console.log('BREEEEEEEDD', image.name)
   const loadData = async () => {
     // const image = await axios.get(`https://api.thedogapi.com/v1/images/search?breed_id=${breed_id}`);
     const image = await axios.get(
@@ -30,6 +31,7 @@ export function Favourites({navigation, route}) {
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
       <Text>FavoritesScreen</Text>
       <Image source={{uri: image?.url, width: 200, height: 200}} />
+      <Text>{image.breed_group}</Text>
       <Button
         title="Go to HomeScreen"
         onPress={() => navigation.navigate('HomeScreen')}
@@ -42,7 +44,7 @@ export function Favourites({navigation, route}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.BACKGROUND_COLOR,
     alignItems: 'center',
     justifyContent: 'center',
   },
