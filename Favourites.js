@@ -1,8 +1,22 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useReducer} from 'react';
 import {StyleSheet, Text, View, Button, Image} from 'react-native';
 import Colors from './src/utils/colors';
 
 export function Favourites({navigation, route}) {
+
+  const [state, dispatch] = useReducer(reducer, intialState)
+
+
+
+
+
+
+
+
+
+
+
+  
   const {breed} = route.params;
   const [image, setImage] = useState(breed.image);
   console.log('BREED', route.params)
